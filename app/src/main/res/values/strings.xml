@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">P0141_AndroidMenu</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_item1">Пух!</string>
+    <string name="action_item2">Настик!</string>
+    <string name="action_item3">Андрон!</string>
+    <string name="hello_world">Hello world!</string>
+</resources>
