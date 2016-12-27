@@ -5,16 +5,18 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    Menu menu;
     TextView tvOut;
     ImageView imageView;
     CheckBox checkBox1, checkBox2;
@@ -39,14 +41,15 @@ public class MainActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imageView);
         checkBox1 = (CheckBox) findViewById(R.id.checkBox1);
         checkBox2 = (CheckBox) findViewById(R.id.checkBox2);
+        checkBox2.setOnCheckedChangeListener(new OnCheckedChange());
 
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
 
+        this.menu = menu;
         menu.setGroupVisible(R.id.group1, checkBox1.isChecked());
-        menu.setGroupVisible(R.id.group_mail, checkBox2.isChecked());
         return super.onPrepareOptionsMenu(menu);
 
     }
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        menu.add(2, 6, 6, "item4").setCheckable(true);
         return true;
 
     }
@@ -69,28 +73,51 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         switch (id) {
-            case R.id.action_settings :
+            case R.id.action_settings:
                 tvOut.setText(getString(R.string.hello_world));
                 imageView.setImageResource(R.mipmap.ic_launcher);
                 Toast.makeText(MainActivity.this, getString(R.string.action_settings), Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.action_item1 :
+            case R.id.action_item1:
                 tvOut.setText(getString(R.string.action_item1));
                 imageView.setImageResource(R.drawable.img_20130703_185525);
                 Toast.makeText(MainActivity.this, getString(R.string.action_item1), Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.action_item2 :
+            case R.id.action_item2:
                 tvOut.setText(getString(R.string.action_item2));
                 imageView.setImageResource(R.drawable.img_20150305_194201);
                 Toast.makeText(MainActivity.this, getString(R.string.action_item2), Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.action_item3 :
+            case R.id.action_item3:
                 tvOut.setText(getString(R.string.action_item3));
                 imageView.setImageResource(R.mipmap.ic_launcher);
                 Toast.makeText(MainActivity.this, getString(R.string.action_item3), Toast.LENGTH_SHORT).show();
                 break;
+            case 6:
+                item.setChecked(!item.isChecked());
+                break;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private class OnCheckedChange implements CompoundButton.OnCheckedChangeListener {
+
+        @Override
+        public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+
+            MenuItem menuItem = menu.findItem(R.id.action_mail);
+
+            if (checkBox2.isChecked()) {
+
+                menuItem.setVisible(true);
+
+            } else {
+
+                menuItem.setVisible(false);
+
+            }
+
+        }
     }
 }
