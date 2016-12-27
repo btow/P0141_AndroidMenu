@@ -13,19 +13,39 @@
     tools:context="com.example.samsung.p0141_androidmenu.MainActivity"
     tools:showIn="@layout/activity_main">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="450px"
+        android:layout_height="600px"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
     <TextView
         android:id="@+id/tvOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="450px"
-        android:layout_height="600px"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:layout_below="@+id/tvOut"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:text="@string/invisible_item"
+        android:checked="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:text="@string/invisible_group1"
+        android:checked="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/checkBox2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

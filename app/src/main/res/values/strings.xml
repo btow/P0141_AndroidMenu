@@ -5,4 +5,7 @@
     <string name="action_item2">Настик!</string>
     <string name="action_item3">Андрон!</string>
     <string name="hello_world">Hello world!</string>
+    <string name="action_mail">Mail</string>
+    <string name="invisible_item">Отобразить пункт меню</string>
+    <string name="invisible_group1">Отобразить группу меню</string>
 </resources>
